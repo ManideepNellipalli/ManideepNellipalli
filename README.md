@@ -54,11 +54,16 @@ I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to 
 
 <div align="center">
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Manideep%20Nellipalli-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/)
+<a href="https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-Manideep%20Nellipalli-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+</a>
+
+<a href="https://www.instagram.com/nani_nellipalli?utm_source=qr&igsh=MXNldWg0OTR5aXpzZg==" target="_blank">
+  <img src="https://img.shields.io/badge/Instagram-nani__nellipalli-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
+</a>
 
 </div>
 
----
 
 ## 📊 GitHub Stats
 
