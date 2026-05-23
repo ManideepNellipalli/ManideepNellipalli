@@ -7,7 +7,7 @@
 <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35px"/>
 
 <!-- Animated Typing SVG -->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=7B2FBE&center=true&vCenter=true&random=false&width=600&lines=Hey%2C+I'm+Manideep+%F0%9F%91%8B;Software+Engineer+%7C+Automation+Dev;Turning+ideas+into+automation+magic+%E2%9C%A8;Building+smarter+workflows+with+code+%F0%9F%9A%80)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=7B2FBE&center=true&vCenter=true&random=false&width=600&lines=Hey%2C+I'm+Manideep+%F0%9F%91%8B;Software+Engineer+%7C+RPA+Developer;ECE+Grad+%7C+Automation+%2B+ML+Enthusiast;Building+smarter+workflows+with+code+%F0%9F%9A%80;Turning+ideas+into+automation+magic+%E2%9C%A8)](https://git.io/typing-svg)
 
 </div>
 
@@ -17,12 +17,13 @@
 
 <img align="right" alt="Coding GIF" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="280"/>
 
-I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to automate the boring stuff and build things that matter. Fresh into the industry, but loaded with curiosity and drive.
+I'm **Manideep Nellipalli**, a **Software Engineer @ QBotica** automating enterprise workflows and building production-grade RPA solutions. ECE graduate with a passion for both automation and machine learning.
 
-- 🤖 I love **RPA & Automation** — if it can be automated, I'll automate it
+- 🤖 Building enterprise automation at **QBotica** — NDS (North Star Digital Solution) & CSA (Compliance, Safety, Accountability)
 - 🐍 **Python** is my go-to language for everything scripty
-- 🗄️ I enjoy writing clean, efficient **SQL** queries
-- 🌱 Currently leveling up my skills every single day
+- 🧠 Explored **ML/Deep Learning** — built a VGG16 CNN for oral cancer detection
+- 📡 Radar background — worked on **3D target motion detection from ISAR data**
+- 🌱 Currently leveling up in UiPath Orchestrator & advanced REFramework patterns
 - ⚡ Fun fact: I believe automation is the superpower of the future
 - 🎯 Goal: Build automation solutions that save thousands of hours
 
@@ -30,12 +31,19 @@ I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to 
 
 ## 🛠️ Tech Stack
 
-### 🤖 Automation
+### 🤖 Automation & RPA
 ![UiPath](https://img.shields.io/badge/UiPath-FF6C00?style=for-the-badge&logo=uipath&logoColor=white)
+![UiPath Orchestrator](https://img.shields.io/badge/Orchestrator-FF6C00?style=for-the-badge&logo=uipath&logoColor=white)
+![REFramework](https://img.shields.io/badge/REFramework-FF6C00?style=for-the-badge&logo=uipath&logoColor=white)
 
 ### 💻 Languages
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+### 📊 Analytics & BI
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=for-the-badge&logo=tableau&logoColor=white)
 
 ### 🧰 Tools & Platforms
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
@@ -44,11 +52,37 @@ I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to 
 
 ---
 
+## 🚀 Featured Projects
+
+### 📡 Detection of 3D Target Motion from ISAR Data
+> Radar signal processing project focused on tracking moving targets in 3D space.
+- Applied **motion compensation** and **Doppler analysis** to estimate target movement
+- Analyzed translational & rotational motion to improve radar-based tracking accuracy
+
+### 🩺 Segmentation & Classification of Oral Cancer
+> Deep learning model for early oral cancer detection from medical images.
+- Fine-tuned a **VGG16-based CNN** for binary classification
+- Applied data balancing, **Binary Cross-Entropy loss**, and **Adam optimizer**
+- Evaluated with accuracy metrics and confusion matrix
+
+---
+
+## 📜 Certifications & Achievements
+
+- 🏆 **Winner** — Weekly Coding Contest
+- 🤖 **Tessolve Certification** — Embedded IoT & Industrial Automation
+- 📡 **NPTEL** — Introduction to Internet of Things
+- 🧠 **NPTEL** — Responsible and Safe AI Systems
+- 🏭 In-Plant Training @ **Voltme Motors Pvt. Ltd., Hyderabad**
+
+---
+
 ## 🌐 Connect With Me
 
 <div align="center">
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Manideep%20Nellipalli-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/)
+[![Email](https://img.shields.io/badge/Email-manideepnellipalli1%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:manideepnellipalli1@gmail.com)
 
 </div>
 
