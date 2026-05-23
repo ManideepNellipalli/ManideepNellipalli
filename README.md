@@ -1,608 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Manideep Nellipalli — Trainer Card</title>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet"/>
-<style>
-  :root {
-    --red: #e3350d;
-    --yellow: #ffcb00;
-    --dark: #1a1a2e;
-    --darker: #0f0f1a;
-    --panel: #16213e;
-    --card: #0f3460;
-    --blue: #378ADD;
-    --lightblue: #85B7EB;
-    --green: #5DCAA5;
-    --orange: #FF6C00;
-    --pyblue: #3776AB;
-    --sqlblue: #4479A1;
-    --white: #f0f0f0;
-    --muted: #8899aa;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--darker);
-    font-family: 'Fira Code', monospace;
-    color: var(--white);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      radial-gradient(1px 1px at 10% 15%, rgba(255,203,0,0.6) 0%, transparent 100%),
-      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 50% 10%, rgba(255,203,0,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 85% 25%, rgba(255,203,0,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 35% 75%, rgba(255,255,255,0.5) 0%, transparent 100%),
-      radial-gradient(1px 1px at 90% 80%, rgba(255,203,0,0.3) 0%, transparent 100%),
-      radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
-      radial-gradient(1px 1px at 60% 85%, rgba(255,203,0,0.5) 0%, transparent 100%),
-      radial-gradient(2px 2px at 78% 42%, rgba(255,203,0,0.5) 0%, transparent 100%),
-      radial-gradient(2px 2px at 5% 55%, rgba(255,255,255,0.3) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .page-wrap {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px 20px 60px;
-  }
-
-  .pokedex-header {
-    background: var(--red);
-    border-radius: 20px 20px 0 0;
-    border: 4px solid var(--yellow);
-    border-bottom: none;
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    position: relative;
-  }
-  .pokedex-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--yellow);
-  }
-  .big-eye {
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    background: #6ec6f5;
-    border: 5px solid #fff;
-    box-shadow: 0 0 0 3px #1a90d4;
-    animation: eyeshine 4s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-  @keyframes eyeshine {
-    0%,100% { box-shadow: 0 0 0 3px #1a90d4; }
-    50% { box-shadow: 0 0 0 3px #1a90d4, 0 0 20px rgba(110,198,245,0.8); }
-  }
-  .header-dots-row { display: flex; gap: 8px; }
-  .hdot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.2); }
-  .header-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 13px;
-    color: var(--yellow);
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-    flex: 1;
-    text-align: center;
-  }
-  .header-no {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 9px;
-    color: rgba(255,255,255,0.7);
-    text-align: right;
-    line-height: 1.8;
-  }
-
-  .main-card {
-    background: var(--dark);
-    border: 4px solid var(--yellow);
-    border-top: none;
-    border-radius: 0 0 20px 20px;
-    overflow: hidden;
-  }
-
-  .top-strip {
-    background: var(--panel);
-    border-bottom: 3px solid var(--yellow);
-    padding: 14px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .trainer-title-block { display: flex; flex-direction: column; gap: 4px; }
-  .trainer-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
-    color: var(--yellow);
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
-  }
-  .trainer-subtitle { font-size: 11px; color: var(--lightblue); letter-spacing: 2px; }
-  .visitor-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--card);
-    border: 2px solid var(--blue);
-    border-radius: 30px;
-    padding: 6px 14px;
-    font-size: 11px;
-    color: var(--lightblue);
-  }
-  .pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--green);
-    animation: pulse 1.5s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.4);opacity:0.7} }
-
-  .body-grid {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-  }
-
-  .left-panel {
-    background: var(--panel);
-    border-right: 3px solid var(--yellow);
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .sprite-screen {
-    width: 160px; height: 160px;
-    background: var(--card);
-    border-radius: 12px;
-    border: 3px solid var(--yellow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .sprite-screen::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px);
-    pointer-events: none;
-    z-index: 2;
-  }
-  .sprite-scan {
-    position: absolute;
-    top: -4px; left: 0; right: 0;
-    height: 4px;
-    background: rgba(110,198,245,0.5);
-    z-index: 3;
-    animation: scanline 2.5s linear infinite;
-  }
-  @keyframes scanline { 0%{top:-4px} 100%{top:164px} }
-  .trainer-emoji {
-    font-size: 80px;
-    animation: float 2.8s ease-in-out infinite;
-    z-index: 1;
-  }
-  @keyframes float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-10px)} }
-
-  .name-plate {
-    background: var(--card);
-    border: 2px solid var(--yellow);
-    border-radius: 8px;
-    padding: 8px 12px;
-    text-align: center;
-    width: 100%;
-  }
-  .name-plate .pname {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
-    color: var(--yellow);
-    display: block;
-    margin-bottom: 4px;
-    line-height: 1.6;
-  }
-  .name-plate .pid { font-size: 10px; color: var(--muted); display: block; }
-
-  .type-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .type-chip {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 7px;
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
-  .type-automation { background: var(--orange); color: #fff; }
-  .type-engineer { background: var(--blue); color: #fff; }
-  .type-fresher { background: var(--green); color: #0a2e22; }
-
-  .level-display {
-    text-align: center;
-    background: var(--darker);
-    border: 2px solid var(--muted);
-    border-radius: 8px;
-    padding: 8px 16px;
-    width: 100%;
-  }
-  .level-label { font-size: 9px; color: var(--muted); letter-spacing: 2px; display: block; margin-bottom: 2px; }
-  .level-num {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 28px;
-    color: var(--yellow);
-    display: block;
-  }
-  .level-tag { font-size: 9px; color: var(--green); letter-spacing: 1px; }
-
-  .right-panel { padding: 20px; display: flex; flex-direction: column; gap: 18px; }
-
-  .section-head {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
-    color: var(--yellow);
-    letter-spacing: 2px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid rgba(255,203,0,0.25);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-head::before { content: '▶'; color: var(--red); font-size: 8px; }
-
-  .hp-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--panel);
-    border: 2px solid var(--green);
-    border-radius: 8px;
-    padding: 10px 14px;
-  }
-  .hp-label { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--green); flex-shrink: 0; }
-  .hp-bar-track {
-    flex: 1;
-    background: var(--darker);
-    border-radius: 4px;
-    height: 12px;
-    border: 1.5px solid rgba(255,255,255,0.1);
-    overflow: hidden;
-  }
-  .hp-bar-fill {
-    height: 100%;
-    width: 0;
-    border-radius: 3px;
-    background: var(--green);
-    animation: hpfill 1.8s cubic-bezier(0.2,1,0.3,1) 0.3s forwards;
-  }
-  @keyframes hpfill { to { width: 85%; } }
-  .hp-val { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--green); flex-shrink: 0; }
-
-  .about-box {
-    background: var(--panel);
-    border: 2px solid rgba(255,203,0,0.2);
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 12px;
-    color: var(--white);
-    line-height: 1.8;
-  }
-  .about-box strong { color: var(--yellow); }
-  .about-list { list-style: none; margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
-  .about-list li { font-size: 11px; color: var(--muted); padding-left: 14px; position: relative; }
-  .about-list li::before { content: '›'; position: absolute; left: 0; color: var(--yellow); }
-
-  .stats-grid { display: flex; flex-direction: column; gap: 8px; }
-  .stat-row { display: flex; align-items: center; gap: 10px; }
-  .stat-name { font-size: 10px; color: var(--muted); width: 90px; flex-shrink: 0; letter-spacing: 1px; }
-  .stat-track {
-    flex: 1;
-    background: var(--darker);
-    border-radius: 3px;
-    height: 10px;
-    border: 1.5px solid rgba(255,255,255,0.07);
-    overflow: hidden;
-  }
-  .stat-fill {
-    height: 100%;
-    border-radius: 2px;
-    width: 0;
-    animation: statfill 1.5s cubic-bezier(0.2,1,0.3,1) forwards;
-  }
-  .stat-fill.d1{animation-delay:0.2s} .stat-fill.d2{animation-delay:0.4s}
-  .stat-fill.d3{animation-delay:0.6s} .stat-fill.d4{animation-delay:0.8s}
-  .stat-fill.d5{animation-delay:1.0s}
-  @keyframes statfill { to { width: var(--w); } }
-  .stat-num { font-size: 10px; color: var(--white); width: 32px; text-align: right; flex-shrink: 0; }
-
-  .moves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .move-card {
-    background: var(--card);
-    border: 2px solid var(--blue);
-    border-radius: 10px;
-    padding: 10px 8px;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.15s, border-color 0.15s, background 0.15s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-  }
-  .move-card:hover { transform: translateY(-3px) scale(1.03); border-color: var(--yellow); background: #1a3a6e; }
-  .move-icon { font-size: 26px; }
-  .move-name { font-family: 'Press Start 2P', monospace; font-size: 7px; color: var(--yellow); line-height: 1.4; }
-  .move-type-badge { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
-  .move-pp { font-size: 8px; color: var(--lightblue); background: rgba(55,138,221,0.15); border-radius: 3px; padding: 2px 6px; }
-
-  .social-row { display: flex; gap: 10px; flex-wrap: wrap; }
-  .social-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--card);
-    border: 2px solid;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 11px;
-    text-decoration: none;
-    color: var(--white);
-    transition: transform 0.15s, background 0.15s;
-    letter-spacing: 1px;
-  }
-  .social-link:hover { transform: translateY(-2px); background: #1a3a6e; }
-  .social-linkedin { border-color: #0077b5; }
-  .social-github { border-color: #555; }
-  .social-icon { width: 16px; height: 16px; flex-shrink: 0; }
-
-  .stats-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .stats-imgs img { width: 100%; border-radius: 8px; border: 2px solid rgba(255,203,0,0.2); }
-  .stats-imgs img:hover { border-color: var(--yellow); }
-  .stats-single { margin-top: 10px; text-align: center; }
-  .stats-single img { border-radius: 8px; border: 2px solid rgba(255,203,0,0.2); max-width: 340px; }
-  .trophy-img { width: 100%; border-radius: 8px; }
-
-  .pokedex-footer {
-    background: var(--red);
-    border-top: 3px solid var(--yellow);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-    border-radius: 0 0 16px 16px;
-  }
-  .footer-region { font-family: 'Press Start 2P', monospace; font-size: 8px; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
-  .footer-quote { font-size: 11px; color: var(--yellow); font-style: italic; letter-spacing: 1px; }
-  .footer-pokeball {
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 3px solid #fff;
-    background: linear-gradient(to bottom, #fff 48%, #333 48%, #333 52%, #e3350d 52%);
-    position: relative; flex-shrink: 0;
-    animation: spin 6s linear infinite;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .footer-pokeball::after {
-    content:''; width:7px; height:7px; border-radius:50%;
-    background:#fff; border:2px solid #333;
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  }
-
-  @media (max-width: 600px) {
-    .body-grid { grid-template-columns: 1fr; }
-    .left-panel { border-right: none; border-bottom: 3px solid var(--yellow); }
-    .moves-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-imgs { grid-template-columns: 1fr; }
-    .header-title { font-size: 9px; }
-    .trainer-title { font-size: 11px; }
-  }
-</style>
-</head>
-<body>
-<div class="page-wrap">
-
-  <div class="pokedex-header">
-    <div class="big-eye"></div>
-    <div class="header-dots-row">
-      <div class="hdot" style="background:#e74c3c;"></div>
-      <div class="hdot" style="background:#f1c40f;"></div>
-      <div class="hdot" style="background:#2ecc71;"></div>
-    </div>
-    <div class="header-title">POKÉDEX — TRAINER PROFILE</div>
-    <div class="header-no">No. 0407<br/>GEN I</div>
+<div class="top-strip">
+  <div class="trainer-title-block">
+    <span class="trainer-title">MANIDEEP</span>
+    <span class="trainer-subtitle">SOFTWARE ENGINEER &nbsp;|&nbsp; AUTOMATION MASTER</span>
   </div>
-
-  <div class="main-card">
-
-    <div class="top-strip">
-      <div class="trainer-title-block">
-        <span class="trainer-title">MANIDEEP</span>
-        <span class="trainer-subtitle">SOFTWARE ENGINEER &nbsp;|&nbsp; AUTOMATION MASTER</span>
-      </div>
-      <div class="visitor-badge">
-        <div class="pulse-dot"></div>
-        <img src="https://komarev.com/ghpvc/?username=ManideepNellipalli&label=Visitors&color=0e75b6&style=flat" alt="Visitor Count" style="height:20px;"/>
-      </div>
-    </div>
-
-    <div class="body-grid">
-
-      <div class="left-panel">
-        <div class="sprite-screen">
-          <div class="sprite-scan"></div>
-          <span class="trainer-emoji">🧑‍💻</span>
-        </div>
-        <div class="name-plate">
-          <span class="pname">MANIDEEP NELLIPALLI</span>
-          <span class="pid">@ManideepNellipalli</span>
-        </div>
-        <div class="type-row">
-          <span class="type-chip type-automation">AUTOMATION</span>
-          <span class="type-chip type-engineer">ENGINEER</span>
-          <span class="type-chip type-fresher">FRESHER</span>
-        </div>
-        <div class="level-display">
-          <span class="level-label">TRAINER LEVEL</span>
-          <span class="level-num">01</span>
-          <span class="level-tag">RISING STAR ✦</span>
-        </div>
-      </div>
-
-      <div class="right-panel">
-
-        <div class="hp-row">
-          <span class="hp-label">HP</span>
-          <div class="hp-bar-track"><div class="hp-bar-fill"></div></div>
-          <span class="hp-val">85/100</span>
-          <span style="font-size:14px;margin-left:4px;">⚡</span>
-        </div>
-
-        <div>
-          <div class="section-head">TRAINER BIO</div>
-          <div class="about-box">
-            I'm <strong>Manideep Nellipalli</strong> — a passionate <strong>Software Engineer</strong> on a mission to automate the boring stuff and build things that matter. Fresh into the industry, loaded with curiosity and drive.
-            <ul class="about-list">
-              <li>Love RPA & Automation — if it can be automated, I'll do it</li>
-              <li>Python is my go-to weapon for everything scripty</li>
-              <li>I enjoy writing clean, efficient SQL queries</li>
-              <li>Currently leveling up my skills every single day</li>
-              <li>Goal: Build automation that saves thousands of hours</li>
-            </ul>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head">BASE STATS</div>
-          <div class="stats-grid">
-            <div class="stat-row">
-              <span class="stat-name">AUTOMATION</span>
-              <div class="stat-track"><div class="stat-fill d1" style="--w:88%;background:#FF6C00;"></div></div>
-              <span class="stat-num">88</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">PYTHON</span>
-              <div class="stat-track"><div class="stat-fill d2" style="--w:76%;background:#3776AB;"></div></div>
-              <span class="stat-num">76</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">SQL</span>
-              <div class="stat-track"><div class="stat-fill d3" style="--w:72%;background:#4479A1;"></div></div>
-              <span class="stat-num">72</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">CURIOSITY</span>
-              <div class="stat-track"><div class="stat-fill d4" style="--w:100%;background:#ffcb00;"></div></div>
-              <span class="stat-num">100</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-name">GROWTH</span>
-              <div class="stat-track"><div class="stat-fill d5" style="--w:95%;background:#5DCAA5;"></div></div>
-              <span class="stat-num">95</span>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head">MOVES — TECH STACK</div>
-          <div class="moves-grid">
-            <a href="https://www.uipath.com/" target="_blank" class="move-card">
-              <span class="move-icon">🤖</span>
-              <span class="move-name">UiPath</span>
-              <span class="move-type-badge">AUTOMATION</span>
-              <span class="move-pp">PP ∞</span>
-            </a>
-            <a href="https://www.python.org/" target="_blank" class="move-card">
-              <span class="move-icon">🐍</span>
-              <span class="move-name">Python</span>
-              <span class="move-type-badge">LANGUAGE</span>
-              <span class="move-pp">PP 40</span>
-            </a>
-            <a href="https://www.mysql.com/" target="_blank" class="move-card">
-              <span class="move-icon">🗄️</span>
-              <span class="move-name">SQL</span>
-              <span class="move-type-badge">DATABASE</span>
-              <span class="move-pp">PP 35</span>
-            </a>
-            <a href="https://github.com/ManideepNellipalli" target="_blank" class="move-card">
-              <span class="move-icon">🐙</span>
-              <span class="move-name">GitHub</span>
-              <span class="move-type-badge">PLATFORM</span>
-              <span class="move-pp">PP 50</span>
-            </a>
-            <a href="https://code.visualstudio.com/" target="_blank" class="move-card">
-              <span class="move-icon">💻</span>
-              <span class="move-name">VS Code</span>
-              <span class="move-type-badge">TOOL</span>
-              <span class="move-pp">PP 50</span>
-            </a>
-            <a href="https://git-scm.com/" target="_blank" class="move-card">
-              <span class="move-icon">🔀</span>
-              <span class="move-name">Git</span>
-              <span class="move-type-badge">VERSION CTRL</span>
-              <span class="move-pp">PP 45</span>
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head">CONNECT</div>
-          <div class="social-row">
-            <a href="https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/" target="_blank" class="social-link social-linkedin">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
-            <a href="https://github.com/ManideepNellipalli" target="_blank" class="social-link social-github">
-              <svg class="social-icon" viewBox="0 0 24 24" fill="#aaa"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head">GITHUB STATS</div>
-          <div class="stats-imgs">
-            <img src="https://github-readme-stats.vercel.app/api?username=ManideepNellipalli&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="GitHub Stats"/>
-            <img src="https://github-readme-streak-stats.herokuapp.com/?user=ManideepNellipalli&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
-          </div>
-          <div class="stats-single">
-            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ManideepNellipalli&theme=tokyonight&hide_border=true&layout=compact&langs_count=6" alt="Top Languages"/>
-          </div>
-        </div>
-
-        <div>
-          <div class="section-head">TROPHIES</div>
-          <img class="trophy-img" src="https://github-profile-trophy.vercel.app/?username=ManideepNellipalli&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&row=1" alt="GitHub Trophies"/>
-        </div>
-
-      </div>
-    </div>
+  <div class="visitor-badge">
+    <div class="pulse-dot"></div>
+    <img src="https://komarev.com/ghpvc/?username=ManideepNellipalli&label=Visitors&color=0e75b6&style=flat" alt="Visitor Count" style="height:20px;"/>
   </div>
-
-  <div class="pokedex-footer">
-    <div class="footer-pokeball"></div>
-    <span class="footer-region">KANTO REGION &nbsp;•&nbsp; SOFTWARE GUILD</span>
-    <span class="footer-quote">"Automate today, innovate tomorrow." ⚡</span>
-    <div class="footer-pokeball"></div>
-  </div>
-
 </div>
-</body>
-</html>
+
+<div class="body-grid">
+
+  <div class="left-panel">
+    <div class="sprite-screen">
+      <div class="sprite-scan"></div>
+      <span class="trainer-emoji">🧑‍💻</span>
+    </div>
+    <div class="name-plate">
+      <span class="pname">MANIDEEP NELLIPALLI</span>
+      <span class="pid">@ManideepNellipalli</span>
+    </div>
+    <div class="type-row">
+      <span class="type-chip type-automation">AUTOMATION</span>
+      <span class="type-chip type-engineer">ENGINEER</span>
+      <span class="type-chip type-fresher">FRESHER</span>
+    </div>
+    <div class="level-display">
+      <span class="level-label">TRAINER LEVEL</span>
+      <span class="level-num">01</span>
+      <span class="level-tag">RISING STAR ✦</span>
+    </div>
+  </div>
+
+  <div class="right-panel">
+
+    <div class="hp-row">
+      <span class="hp-label">HP</span>
+      <div class="hp-bar-track"><div class="hp-bar-fill"></div></div>
+      <span class="hp-val">85/100</span>
+      <span style="font-size:14px;margin-left:4px;">⚡</span>
+    </div>
+
+    <div>
+      <div class="section-head">TRAINER BIO</div>
+      <div class="about-box">
+        I'm <strong>Manideep Nellipalli</strong> — a passionate <strong>Software Engineer</strong> on a mission to automate the boring stuff and build things that matter. Fresh into the industry, loaded with curiosity and drive.
+        <ul class="about-list">
+          <li>Love RPA & Automation — if it can be automated, I'll do it</li>
+          <li>Python is my go-to weapon for everything scripty</li>
+          <li>I enjoy writing clean, efficient SQL queries</li>
+          <li>Currently leveling up my skills every single day</li>
+          <li>Goal: Build automation that saves thousands of hours</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head">BASE STATS</div>
+      <div class="stats-grid">
+        <div class="stat-row">
+          <span class="stat-name">AUTOMATION</span>
+          <div class="stat-track"><div class="stat-fill d1" style="--w:88%;background:#FF6C00;"></div></div>
+          <span class="stat-num">88</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">PYTHON</span>
+          <div class="stat-track"><div class="stat-fill d2" style="--w:76%;background:#3776AB;"></div></div>
+          <span class="stat-num">76</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">SQL</span>
+          <div class="stat-track"><div class="stat-fill d3" style="--w:72%;background:#4479A1;"></div></div>
+          <span class="stat-num">72</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">CURIOSITY</span>
+          <div class="stat-track"><div class="stat-fill d4" style="--w:100%;background:#ffcb00;"></div></div>
+          <span class="stat-num">100</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-name">GROWTH</span>
+          <div class="stat-track"><div class="stat-fill d5" style="--w:95%;background:#5DCAA5;"></div></div>
+          <span class="stat-num">95</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head">MOVES — TECH STACK</div>
+      <div class="moves-grid">
+        <a href="https://www.uipath.com/" target="_blank" class="move-card">
+          <span class="move-icon">🤖</span>
+          <span class="move-name">UiPath</span>
+          <span class="move-type-badge">AUTOMATION</span>
+          <span class="move-pp">PP ∞</span>
+        </a>
+        <a href="https://www.python.org/" target="_blank" class="move-card">
+          <span class="move-icon">🐍</span>
+          <span class="move-name">Python</span>
+          <span class="move-type-badge">LANGUAGE</span>
+          <span class="move-pp">PP 40</span>
+        </a>
+        <a href="https://www.mysql.com/" target="_blank" class="move-card">
+          <span class="move-icon">🗄️</span>
+          <span class="move-name">SQL</span>
+          <span class="move-type-badge">DATABASE</span>
+          <span class="move-pp">PP 35</span>
+        </a>
+        <a href="https://github.com/ManideepNellipalli" target="_blank" class="move-card">
+          <span class="move-icon">🐙</span>
+          <span class="move-name">GitHub</span>
+          <span class="move-type-badge">PLATFORM</span>
+          <span class="move-pp">PP 50</span>
+        </a>
+        <a href="https://code.visualstudio.com/" target="_blank" class="move-card">
+          <span class="move-icon">💻</span>
+          <span class="move-name">VS Code</span>
+          <span class="move-type-badge">TOOL</span>
+          <span class="move-pp">PP 50</span>
+        </a>
+        <a href="https://git-scm.com/" target="_blank" class="move-card">
+          <span class="move-icon">🔀</span>
+          <span class="move-name">Git</span>
+          <span class="move-type-badge">VERSION CTRL</span>
+          <span class="move-pp">PP 45</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head">CONNECT</div>
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/" target="_blank" class="social-link social-linkedin">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/ManideepNellipalli" target="_blank" class="social-link social-github">
+          <svg class="social-icon" viewBox="0 0 24 24" fill="#aaa"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head">GITHUB STATS</div>
+      <div class="stats-imgs">
+        <img src="https://github-readme-stats.vercel.app/api?username=ManideepNellipalli&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" alt="GitHub Stats"/>
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=ManideepNellipalli&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
+      </div>
+      <div class="stats-single">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ManideepNellipalli&theme=tokyonight&hide_border=true&layout=compact&langs_count=6" alt="Top Languages"/>
+      </div>
+    </div>
+
+    <div>
+      <div class="section-head">TROPHIES</div>
+      <img class="trophy-img" src="https://github-profile-trophy.vercel.app/?username=ManideepNellipalli&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&row=1" alt="GitHub Trophies"/>
+    </div>
+
+  </div>
+</div>
