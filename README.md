@@ -15,6 +15,12 @@
 
 ## 🙋‍♂️ About Me
 
+🎮 Pokémon Themed Animated Profile
+
+<a href="https://manideepnellipalli.github.io/ManideepNellipalli/" target="_blank">
+  <img src="https://img.shields.io/badge/View%20My%20Pokemon%20Profile-FFCB05?style=for-the-badge&logo=pokemon&logoColor=black" />
+</a>
+
 <img align="right" alt="Coding GIF" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="280"/>
 
 I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to automate the boring stuff and build things that matter. Fresh into the industry, but loaded with curiosity and drive.
