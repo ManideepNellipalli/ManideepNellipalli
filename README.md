@@ -122,8 +122,7 @@ I'm **Manideep Nellipalli**, a **Software Engineer @ QBotica** automating enterp
 I'm always open to exciting opportunities, collaboration, or just a good tech conversation.
 
 [![LinkedIn](https://img.shields.io/badge/Let's%20Connect%20on%20LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/manideep-nellipalli-3a33b5270/)
-
----
+[![Instagram](https://img.shields.io/badge/Follow%20on%20Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/nani_nellipalli)
 
 *"Automate today, innovate tomorrow."* 🚀
 
