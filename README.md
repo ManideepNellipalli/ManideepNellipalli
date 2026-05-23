@@ -58,28 +58,16 @@ I'm **Manideep Nellipalli**, a passionate **Software Engineer** on a mission to 
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=ManideepNellipalli&show_icons=true&theme=tokyonight&hide_border=true&include_all_commits=true&count_private=true" width="48%" alt="GitHub Stats"/>
 <img src="https://github-readme-streak-stats.herokuapp.com/?user=ManideepNellipalli&theme=tokyonight&hide_border=true" width="48%" alt="GitHub Streak"/>
 
-</div>
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ManideepNellipalli&theme=tokyonight&hide_border=true&layout=compact&langs_count=6" width="40%" alt="Top Languages"/>
 
 </div>
 
 ---
 
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-[![trophy](https://github-profile-trophy.vercel.app/?username=ManideepNellipalli&theme=darkhub&no-frame=true&no-bg=true&margin-w=4&row=1)](https://github.com/ryo-ma/github-profile-trophy)
-
-</div>
-
----
 
 ## 🤝 Let's Connect!
 
